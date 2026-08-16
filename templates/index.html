@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Crée une fiche de révision avec DeepSeek.">
+    <title>RévisionIA</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="/" aria-label="Accueil RévisionIA">
+            <span class="brand-icon" aria-hidden="true">R</span>
+            <span>RévisionIA</span>
+        </a>
+        <span class="local-badge">Application locale</span>
+    </header>
+
+    <main class="page-container">
+        <section class="hero">
+            <p class="eyebrow">ASSISTANT DE RÉVISION</p>
+            <h1>Transforme ton cours en fiche de révision.</h1>
+            <p>
+                Colle un texte : DeepSeek créera un résumé, les notions clés,
+                cinq questions et leurs réponses.
+            </p>
+        </section>
+
+        <section class="workspace">
+            <form class="card input-card" id="revision-form">
+                <div class="card-heading">
+                    <div>
+                        <p class="step-label">ÉTAPE 1</p>
+                        <h2>Texte du cours</h2>
+                    </div>
+                    <span class="counter" id="text-counter">0 / 12 000</span>
+                </div>
+
+                <label class="sr-only" for="course-text">Texte à transformer</label>
+                <textarea
+                    id="course-text"
+                    name="course_text"
+                    minlength="50"
+                    maxlength="12000"
+                    placeholder="Colle ici un paragraphe de ton cours…"
+                    required
+                ></textarea>
+
+                <p class="input-help">Entre 50 et 12 000 caractères.</p>
+
+                <div class="form-actions">
+                    <button class="primary-button" id="generate-button" type="submit">
+                        <span aria-hidden="true">✦</span>
+                        Transformer ce texte en fiche
+                    </button>
+                    <button class="secondary-button" id="clear-button" type="button">
+                        Effacer
+                    </button>
+                </div>
+
+                <p class="privacy-note">
+                    Seul le texte collé est envoyé à DeepSeek après ton clic.
+                </p>
+            </form>
+
+            <section class="card result-card" aria-live="polite">
+                <div class="card-heading">
+                    <div>
+                        <p class="step-label">ÉTAPE 2</p>
+                        <h2>Fiche générée</h2>
+                    </div>
+                    <span class="status-badge" id="status-badge">En attente</span>
+                </div>
+
+                <div class="empty-result" id="empty-result">
+                    <span class="empty-icon" aria-hidden="true">◇</span>
+                    <strong>Ta fiche apparaîtra ici</strong>
+                    <p>Ajoute un cours puis utilise le bouton de transformation.</p>
+                </div>
+
+                <div class="error-message" id="error-message" hidden></div>
+                <pre class="result-content" id="result-content" hidden></pre>
+
+                <button class="download-button" id="download-button" type="button" hidden>
+                    Enregistrer la fiche en .txt
+                </button>
+            </section>
+        </section>
+    </main>
+
+    <footer>
+        RévisionIA · Python, FastAPI et DeepSeek
+    </footer>
+
+    <script src="/static/app.js" defer></script>
+</body>
+</html>
