@@ -1,0 +1,16 @@
+# Clé privée DeepSeek
+.env
+
+# Environnement Python
+.venv/
+
+# Fichiers temporaires Python
+__pycache__/
+*.pyc
+
+# Archives de livraison générées localement
+outputs/
+
+# Réglages personnels des éditeurs
+.vscode/
+.idea/
